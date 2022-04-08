@@ -1,4 +1,4 @@
-name: Publish NPM
+name: Publish | NPM
 on: workflow_dispatch
 jobs:
   create-npm-release:
