@@ -1,0 +1,21 @@
+name: Publish NPM
+on: workflow_dispatch
+jobs:
+  create-cargo-release:
+    name: Publish to cargo
+    environment: cargo
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Update apt"
+        run: apt-get update -y
+      - name: Install cargo
+        run: apt-get install -y cargo
+      - name: Login to cargo
+        with:
+          CRATES_TOKEN: ${{ secrets.CRATES_KEY }}
+        run: echo $CRATES_TOKEN | cargo login
+      - name: Publish
+        run: cargo publish
+      - name: Logout
+        run: cargo logout

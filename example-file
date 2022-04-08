@@ -1,0 +1,7 @@
+puBliC with sharing abstract class Test {
+    public void test() {
+    if(x) {
+    return 10;
+    }
+    }
+}

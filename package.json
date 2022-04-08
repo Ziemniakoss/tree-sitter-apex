@@ -1,0 +1,18 @@
+{
+  "name": "tree-sitter-apex",
+  "version": "1.0.0",
+  "description": "Unofficial Apex Tree Sitter",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "generate-parser": "npx tree-sitter generate",
+    "playground": "npx tree-sitter generate && npx tree-sitter build-wasm && npx tree-sitter playground"
+  },
+  "author": "Ziemniakoss",
+  "dependencies": {
+    "nan": "^2.15.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.0"
+  }
+}
