@@ -3,7 +3,7 @@ on: workflow_dispatch
 jobs:
   create-cargo-release:
     name: Publish to cargo
-    environment: cargo
+    environment: crates
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
