@@ -12,8 +12,6 @@ jobs:
       - name: Install cargo
         run: sudo apt-get install -y cargo
       - name: Publish
-        env:
-          CRATES_TOKEN: ${{ secrets.CRATES_KEY }}
-        run: cargo publish --token $CRATES_TOKEN
+        run: cargo publish --token  ${{ secrets.CRATES_KEY }}
       - name: Logout
         run: cargo logout
