@@ -12,7 +12,7 @@ jobs:
       - name: Install cargo
         run: apt-get install -y cargo
       - name: Login to cargo
-        with:
+        env:
           CRATES_TOKEN: ${{ secrets.CRATES_KEY }}
         run: echo $CRATES_TOKEN | cargo login
       - name: Publish
