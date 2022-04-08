@@ -5,6 +5,7 @@
   "main": "bindings/node",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tree-sitter generate && npx node-gyp build",
     "generate-parser": "npx tree-sitter generate",
     "playground": "npx tree-sitter generate && npx tree-sitter build-wasm && npx tree-sitter playground"
   },
@@ -13,6 +14,7 @@
     "nan": "^2.15.0"
   },
   "devDependencies": {
+    "node-gyp": "^9.0.0",
     "tree-sitter-cli": "^0.20.0"
   }
 }
