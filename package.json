@@ -16,5 +16,12 @@
   "devDependencies": {
     "node-gyp": "^9.0.0",
     "tree-sitter-cli": "^0.20.0"
+  },
+  "treesitter": {
+    "file-types": [
+      "apex",
+      "cls",
+      "trigger"
+    ]
   }
 }
