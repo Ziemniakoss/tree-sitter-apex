@@ -8,9 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: "Update apt"
-        run: apt-get update -y
+        run: sudo apt-get update -y
       - name: Install cargo
-        run: apt-get install -y cargo
+        run: sudo apt-get install -y cargo
       - name: Login to cargo
         env:
           CRATES_TOKEN: ${{ secrets.CRATES_KEY }}
