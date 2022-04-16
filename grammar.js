@@ -569,7 +569,6 @@ module.exports = grammar({
             seq('[', ']')
         )),
 
-        //tODO change
         switch_expression: $ => seq(
             caseInsensitive('switch'),
             caseInsensitive('on'),
@@ -621,7 +620,7 @@ module.exports = grammar({
             $.break_statement,
             $.continue_statement,
             $.return_statement,
-            $.switch_expression, //switch statements and expressions are identical
+            $.switch_expression,
             $.local_variable_declaration,
             $.throw_statement,
             $.try_statement,
@@ -874,6 +873,7 @@ module.exports = grammar({
         _class_body_declaration: $ => choice(
             $.field_declaration,
             $.method_declaration,
+            $.property_declaration,
             $.class_declaration,
             $.interface_declaration,
             $.enum_declaration,
@@ -942,6 +942,43 @@ module.exports = grammar({
             $._variable_declarator_list,
             ';'
         ),
+
+        property_declaration: $ => seq(
+          optional($.modifiers),
+          field("type", $._unannotated_type),
+            $._variable_declarator_list,
+            '{',
+            choice(
+                seq(
+                    $.property_getter,
+                    optional($.property_setter)
+                ),
+                seq(
+                    $.property_setter,
+                    optional($.property_getter)
+                )
+            ),
+            '}'
+        ),
+
+        property_getter: $ => seq(
+            optional($.modifiers),
+            caseInsensitive('get'),
+            choice(
+                $.block,
+                ';'
+            )
+        ),
+
+        property_setter: $ => seq(
+            optional($.modifiers),
+            caseInsensitive('set'),
+            choice(
+                $.block,
+                ';'
+            )
+        ),
+
 
         _default_value: $ => seq(
             'default',
